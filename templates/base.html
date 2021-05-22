@@ -1,0 +1,253 @@
+{% load static %}
+<html>
+<head>
+    <title>{{ top_name.garden_name }} - Бала бакчасы</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ top_name.garden_name }} бала бакчасы. Детский сад {{ top_name.garden_name }}">
+    <meta name="keywords" content="Детский сад, бала бакча, бакча, садик, {{ top_name.garden_name }}, бакчасы">
+    <!--====>> Favicon icon CSS <<====-->
+    <link rel="icon" type="image/x-icon" href="{% static 'img/favicon/favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+          integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
+    <!--====>> Bootstrap V4 CSS <<====-->
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+
+    <!-- Data picker -->
+    <link href="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.css' %}" rel="stylesheet">
+
+    <!--====>> Google fonts <<====-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Radley:400,400i" rel="stylesheet">
+
+    <!--====>> Slick Slider CSS <<====-->
+    <link href="{% static 'vendor/slick/slick/slick.css' %}" type="text/css" rel="stylesheet"/>
+    <!--====>> Slick Slider CSS <<====-->
+    <link href="{% static 'vendor/lightbox/ekko-light.min.css' %}" type="text/css" rel="stylesheet"/>
+
+    <!--====>> Index CSS <<====-->
+    <link href="{% static 'css/index.css' %}" type="text/css" rel="stylesheet"/>
+</head>
+<body class="blog-posts">
+<div class="preloader">
+    <div class="preloader-container">
+        <div class="preloader-item"></div>
+        <div class="preloader-item"></div>
+        <div class="preloader-item"></div>
+        <div class="preloader-item"></div>
+        <div class="preloader-item"></div>
+    </div>
+</div>
+
+<!-- Begin header -->
+<header class="header">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="top-line">
+                    <a href="{% url 'home' %}" class="logo">
+
+                        {{ top_name.garden_name }}
+
+                    </a>
+                    <nav class="main-nav">
+                        <ul class="main-nav-list">
+                            <li>
+                                <a href="{% url 'home' %}">Башкы бет</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'news' %}">Жаңылыктар</a>
+                            </li>
+                            <li>
+                                <a href="{% url 'contacts' %}">Дарек</a>
+                            </li>
+                            <li>
+                                <a style="color:#ffaf5f;">Электрондук кезек<i class="fas fa-angle-down"></i></a>
+                                <ul class="tt-dropdown-menu">
+                                    <li>
+                                        <a href="{% url 'queue' %}">Электрондук кезек</a>
+                                    </li>
+                                    <li>
+                                        <a href="{% url 'queue_new' %}">Электрондук каттоого арыз берүү</a>
+                                    </li>
+                                </ul>
+                            </li>
+
+
+                            <li><a>Балдардын тизмеси<i class="fas fa-angle-down"></i></a>
+                                <ul class="tt-dropdown-menu">
+
+                                    {% for group in group_name %}
+                                        <li>
+                                            <a href="{% url 'group_details' group_id=group.id %}"> {{ group }}</a>
+                                        </li>
+                                    {% endfor %}
+                                    {#                                    <li>#}
+                                    {#                                        <a href="{% url 'group2' %}">Кенже тайпа</a>#}
+                                    {#                                    </li>#}
+                                    {#                                    <li>#}
+                                    {#                                        <a href="{% url 'group3' %}">Орто тайпа</a>#}
+                                    {#                                    </li>#}
+                                    {#                                    <li>#}
+                                    {#                                        <a href="{% url 'group4' %}">Жогорку тайпа</a>#}
+                                    {#                                    </li>#}
+                                </ul>
+                            </li>
+                            {% if user.is_authenticated %}
+                                <li>
+                                    <a href="{% url 'logout' %}">Чыгуу</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                        <div class="close-nav">
+                            <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M 10,10 L 30,30 M 30,10 L 10,30" fill="#3B4757"/>
+                            </svg>
+                        </div>
+                    </nav>
+                    <div class="header-controls">
+
+                        <div class="hamburger">
+                            <svg width="24" height="18" viewBox="0 0 24 18" fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1.02857 2.31427H22.9714C23.5371 2.31427 24 1.85141 24 1.2857C24 0.719983 23.5371 0.257126 22.9714 0.257126H1.02857C0.462857 0.257126 0 0.719983 0 1.2857C0 1.85141 0.462857 2.31427 1.02857 2.31427Z"
+                                      fill="#3B4757"/>
+                                <path d="M1.02857 10.0285H22.9714C23.5371 10.0285 24 9.56567 24 8.99996C24 8.43425 23.5371 7.97139 22.9714 7.97139H1.02857C0.462857 7.97139 0 8.43425 0 8.99996C0 9.56567 0.462857 10.0285 1.02857 10.0285Z"
+                                      fill="#3B4757"/>
+                                <path d="M1.02857 17.7428H22.9714C23.5371 17.7428 24 17.28 24 16.7143C24 16.1485 23.5371 15.6857 22.9714 15.6857H1.02857C0.462857 15.6857 0 16.1485 0 16.7143C0 17.28 0.462857 17.7428 1.02857 17.7428Z"
+                                      fill="#3B4757"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="top-img">
+        <img src="{% static 'img/lazy.png' %}" class="lazy" data-src="{% static 'img/cloud.png' %}" alt="cloud">
+    </div>
+    <!-- <div class="bottom-img">
+        <img src="img/lazy.png" class="lazy" data-src="img/cloud.png" alt="cloud">
+    </div> -->
+</header>
+<!-- End header -->
+{% block content %}
+{% endblock content %}
+
+<footer>
+    <div class="footer-top lazy" data-src="{% static 'img/footer-bg.svg' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-4">
+                    <div class="f-subscribe">
+                        <a href="{% url 'home' %}" class="logo"><h2>{{ top_name.garden_name }}</h2></a>
+                        <p>Балдардын билим алып, өсүп, колдоо үчүн биздин тажрыйбалуу мугалимдер кызыктуу жана пайдалуу
+                            чөйрө түзүп беришет</p>
+
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="f-nav">
+                        <h4>Тез шилтемелер</h4>
+                        <nav>
+                            <ul class="flex-style">
+                                <li><a href="{% url 'home' %}">Башкы бет</a></li>
+                                <li><a href="{% url 'news' %}">Жаңылыктар</a></li>
+                                <li><a href="{% url 'contacts' %}">Дарек</a></li>
+                                <li><a href="{% url 'queue' %}">Электрондук кезек</a></li>
+                                {% if user.is_authenticated %}
+                                    <li><a href="{% url 'panel_admin' %}">Башкару жай</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'login' %}">Кирүү</a></li>
+                                {% endif %}
+                                <li><a href="{% url 'queue' %}">Электрондук каттоого арыз берүү</a></li>
+
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="f-contact">
+                        <h4>Биздин дарек</h4>
+                        <div class="contact-list">
+                            <a href="#" target="_blank"><img src="{% static 'img/lazy.png' %}" class="lazy"
+                                                             data-src="{% static 'img/map-marker-small.svg' %}"
+                                                             alt="marker">{{ top_name.garden_address }}</a>
+                            <a href=""><img src="{% static 'img/lazy.png' %}" class="lazy"
+                                            data-src="{% static 'img/call.svg' %}"
+                                            alt="call"> {{ top_name.garden_phone }}</a>
+                            <a href="#"><img src="{% static 'img/lazy.png' %}" class="lazy"
+                                             data-src="{% static 'img/envelope.svg' %}"
+                                             alt="img">{{ top_name.garden_email }}</a>
+                            <p><img src="{% static 'img/lazy.png' %}" class="lazy"
+                                    data-src="{% static 'img/clock.svg' %}" alt="img">Дш-Жм: {{ top_name.garden_start }} – {{ top_name.garden_end }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-bottom">
+                        <p>&copy; 2019 <a href="#">{{ top_name.garden_name }} </a> designed by <a href="http://infis.kg"
+                                                                                                  style="color: #567dfd;font-size: 19px;font-weight: 600;">Infis</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="up-btn">
+    <svg width="13" height="8" viewBox="0 0 13 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M13 6.36563C13 6.77035 12.8528 7.17536 12.5568 7.4918C11.9438 8.1459 10.924 8.172 10.2791 7.55029L6.48873 3.89339L2.72462 7.54655C2.08197 8.17055 1.06219 8.14763 0.446938 7.49525C-0.168314 6.84259 -0.145429 5.80813 0.497507 5.18413L5.37122 0.453213C5.99268 -0.149866 6.9715 -0.151024 7.59494 0.449475L12.4992 5.1801C12.8316 5.50199 13 5.93281 13 6.36563Z"/>
+    </svg>
+</div>
+<!-- ===> Juery 3.2.1 JS <==== -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<!-- ===> Bootstrap 4 JS <==== -->
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<!-- ===> Lazy loader JS <==== -->
+<script src="{% static 'vendor/lazy-load/jquery.lazy.min.js' %}"></script>
+
+<!-- ===> Input mask JS <==== -->
+<script src="{% static 'vendor/input-mask/jquery.mask.min.js' %}"></script>
+
+<!-- Data picker -->
+<script src="{% static 'vendor/bootstrap-datetimepicker/moment.js' %}"></script>
+<script src="{% static 'vendor/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js' %}"></script>
+
+<!-- Lightbox -->
+<script src="{% static 'vendor/lightbox/ekko-light.min.js' %}"></script>
+
+<!-- Masonry JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js"></script>
+
+<!-- Images loader -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.min.js"></script>
+<script src="{% static 'vendor/shuffle/isotope.js' %}"></script>
+
+<!-- ===> Slick slider JS <==== -->
+<script src="{% static 'vendor/slick/slick/slick.min.js' %}"></script>
+
+<script src="{% static 'vendor/form-validation/jquery.form.js' %}"></script>
+<script src="{% static 'vendor/form-validation/jquery.validate.min.js' %}"></script>
+
+<script src="{% static 'vendor/paroller/dist/jquery.paroller.min.js' %}"></script>
+
+<!-- ===> Common JS <==== -->
+<script src="{% static 'js/common.js' %}"></script>
+<script src="{% static 'form/forms.js' %}"></script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDuHS2And3EtzpWBoMSqCIIiJzAEynp5ms&callback=initMap" async
+        defer></script>
+</body>
+</html>

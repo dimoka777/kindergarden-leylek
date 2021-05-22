@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Begin page name -->
+    <section class="page-name mb-xs-30 mb-md-30 mb-lg-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Тайпаны өзгөртүү</h1>
+                </div>
+            </div>
+        </div>
+        <div class="layer-background lazy" data-src="{% static 'img/slider.png' %}"></div>
+        <img src="{% static 'img/lazy.png' %}" class="page-name-img lazy" data-src="{% static 'img/cloud.png' %}"
+             alt="Img">
+    </section>
+    <!-- End page name -->
+    <div class="container">
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-info" type="submit" value="Сактоо">Сактоо</button>
+        </form>
+    </div>
+{% endblock content %}

@@ -1,0 +1,31 @@
+from django.urls import path
+from .views import (QueueListView, QueueCreateView, Queue1ListView,
+                    Queue2ListView, Queue3ListView, Queue4ListView,
+                    Queue5ListView, QueueUpdateView, QueueDetailView,
+                    QueueDeleteView, NameUpdateView, NameListView,
+                    PostListView, groups_details, PanelAdmin, GroupListView,
+                    GroupDeleteView, GroupUpdateView, GroupDetailView,
+                    GroupCreateView)
+
+urlpatterns = [
+    path('group/', GroupListView.as_view(), name='group'),
+    path('group/<int:pk>/delete/', GroupDeleteView.as_view(), name='group_delete'),
+    path('group/<int:pk>/edit/', GroupUpdateView.as_view(), name='group_edit'),
+    path('group/<int:pk>/', GroupDetailView.as_view(), name='group_detail'),
+    path('group/new/', GroupCreateView.as_view(), name='group_new'),
+    path('group1/', Queue1ListView.as_view(), name='group1'),
+    path('group2/', Queue2ListView.as_view(), name='group2'),
+    path('group3/', Queue3ListView.as_view(), name='group3'),
+    path('group4/', Queue4ListView.as_view(), name='group4'),
+    path('group5/', Queue5ListView.as_view(), name='group5'),
+    path('queue/', QueueListView.as_view(), name='queue'),
+    path('queue/<int:pk>/', QueueDetailView.as_view(), name='queue_detail'),
+    path('queue/new/', QueueCreateView.as_view(), name='queue_new'),
+    path('queue/<int:pk>/update/', QueueUpdateView.as_view(), name='queue_update'),
+    path('queue/<int:pk>/delete/', QueueDeleteView.as_view(), name='queue_delete'),
+    path('name/<int:pk>/update/', NameUpdateView.as_view(), name='name_update'),
+    path('name/', NameListView.as_view(), name='name'),
+    path('', PostListView.as_view(), name='post'),
+    path('group<int:group_id>/', groups_details, name="group_details"),
+    path('panel_admin/', PanelAdmin.as_view(), name='panel_admin'),
+]

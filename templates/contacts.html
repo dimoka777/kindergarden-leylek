@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Begin page name -->
+    <section class="page-name mb-xs-30 mb-md-30 mb-lg-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Биздин Дарек</h1>
+                </div>
+            </div>
+        </div>
+        <div class="layer-background lazy" data-src="{% static 'img/slider.png' %}"></div>
+        <img src="{% static 'img/lazy.png' %}" class="page-name-img lazy" data-src="{% static 'img/cloud.png' %}" alt="Img">
+    </section>
+    <!-- End page name -->
+    <main class="main-container">
+        <!-- Begin contacts -->
+        <section class="contact-container pt-60 pb-60 pt-xs-30 pb-xs-30 pt-md-60 pb-md-60 r-cloud" id="contacts-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 mb-xs-50 mb-md-60">
+                        <div class="map-block" id="contact-map" data-lng='{{top_name.garden_map_lat}}' data-lat='{{top_name.garden_map_lon}}'
+                             data-zoom='10' data-map-icon="{% static 'img/map-marker.svg' %}"></div>
+                    </div>
+                    <div class="col-lg-6 mb-xs-20 mb-md-60">
+                        <h2>Биздин Дарек</h2>
+                        <!-- Begin main-form -->
+                        <div class="contact-list">
+                            <a href="#" target="_blank"><img src="{% static 'img/lazy.png' %}" class="lazy"
+                                                             data-src="{% static 'img/map-marker-small.svg' %}" alt="marker">{{ top_name.garden_address }}</a>
+                            <a href="#"><img src="{% static 'img/lazy.png' %}" class="lazy" data-src="{% static 'img/call.svg' %}"
+                                                            alt="call">{{top_name.garden_phone}}</a>
+                            <p><img src="{% static 'img/lazy.png' %}" class="lazy" data-src="{% static 'img/clock.svg' %}" alt="img">Дш - Жм: {{top_name.garden_start}} –
+                                {{top_name.garden_end}}
+                        </div>
+                        <!-- End main-form -->
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End contacts -->
+    </main>
+{% endblock content %}

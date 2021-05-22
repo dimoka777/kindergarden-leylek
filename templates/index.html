@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <main class="main-container">
+
+        <!-- Begin text-block -->
+        <section class="text-block pb-xs-30 pb-sm-50 pb-md-60 on-scroll" id="top-bg">
+            <div class="container">
+                <div class="row align-items-sm-center align-items-lg-center">
+                    <div class="col-md-6 on-scroll fade-left fade-scale">
+                        <div class="svg-block">
+                            <svg viewBox="0 0 526 502" fill="none" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink">
+                                <mask id="img1" maskUnits="userSpaceOnUse" x="0" y="0" width="526" height="502">
+                                    <path d="M51 8.49999C125.8 -21.9 276.833 39.8333 343 74.5C288.5 32.5 323 18.5 347 20.5C371 22.5 432.5 44.5 467.5 68C495.5 86.8 491.167 99.8333 485.5 104C489.333 108.333 499.7 121.5 510.5 139.5C524 162 532.5 183.5 517 210C504.6 231.2 446.833 231.833 421 229.5C419.667 229.5 422.4 233.9 444 251.5C471 273.5 495.5 299.5 493.5 330.5C491.9 355.3 436.833 363.833 409.5 365C410.5 368.5 409.8 376.9 399 382.5C388.2 388.1 355.833 387.5 341 386.5C364.167 399 410.3 428.9 409.5 448.5C408.5 473 386.5 492 344 488C301.5 484 238 444.5 250 452.5C262 460.5 280 481.5 271.5 492C263 502.5 236 504.5 216.5 496C197 487.5 81.5 440.5 67.5 397.5C53.5 354.5 83.5 367 81.5 359.5C79.5 352 53 346.5 25.5 293C3.50001 250.2 34.5 226.5 58 224.5C54.8333 224.5 40.3 217.8 23.5 191C6.7 164.2 25.8333 142.5 37.5 135C35.5 133.167 30.6 128.6 27 125C22.5 120.5 -42.5 46.5 51 8.49999Z"
+                                          fill="#C4C4C4"/>
+                                </mask>
+                                <g mask="url(#img1)">
+                                    <rect y="-13" width="750" height="523" fill="url(#pattern0)"/>
+                                </g>
+                                <defs>
+                                    <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
+                                        <use xlink:href="#for-img1" transform="scale(0.00133333 0.00191205)"/>
+                                    </pattern>
+                                    <image id="for-img1" width="750" height="523"
+                                           xlink:href="{% static 'img/svg-block-1.jpg' %}"></image>
+                                </defs>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="col-md-6 on-scroll fade-up fade-scale pt-xs-35 pt-md-0">
+                        <div class="block-header mb-xs-25 mb-md-25">
+                            <p class="mb-xs-15 mb-lg-8">Биздин бала бакча жөнүндө</p>
+                            <h2 class="mb-xs-25 mb-md-25"><span>«{{ top_name.garden_name }}»</span> бала бакчасы жөнүндө
+                                маалымат.</h2>
+                        </div>
+                        <p class="mb-xs-20 mb-md-30">{{ top_name.garden_info }}</p>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Begin text-block -->
+        <!-- Begin education-slier -->
+        <section
+                class="wave-block mb-xs-65 mb-md-60 mb-lg-120 pb-xs-130 pb-md-120 pb-lg-150 pt-xs-90 pt-md-120 pt-lg-180 lazy"
+                data-src="{% static 'img/blue-wave.png' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-header on-scroll">
+                            <p class="h-sub">Биздин максатыбыз билим жана тарбия</p>
+                            <h2>Биздин тайпалар жөнүндө</h2>
+                        </div>
+                        <div class="education-slier on-scroll fade-up" data-show-count='3' data-show-count-md='2'
+                             data-show-count-mob='1' data-slick-speed="5000" data-slick-autoplay="true">
+                            {% for group in group_name %}
+                                <div class="it-card">
+                                    <div class="education-short">
+                                        <div class="education-top">
+                                            <!-- <img src="img/lazy.png" class="lazy" data-src="img/educational-1.jpg" alt="img"> -->
+                                            <img src="{{ group.group_img.url }}" alt="img">
+                                            <div class="hide-block">
+                                                <div class="inner-wrap">
+                                                    <p>{{ group.about_text }}</p>
+                                                    <div class="education-short-info">
+                                                        <p><span>Катталгандар:</span> {{ group.group_reg }}</p>
+                                                        <p><span>Мугалимдер:</span> {{ group.group_teachers }}</p>
+                                                    </div>
+                                                     <a href="{% url 'group_details' group_id=group.id %}" class="read-more">Балдардын тизмеси</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="education-bottom">
+                                            <p>{{group.group_name}} <span class="education-age">{{ group.group_year_from }}-{{ group.group_year_to }}</span> <span
+                                                    class="old">Жыл</span>
+                                            </p>
+                                        </div>
+                                        <!-- educational-1 -->
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End education-slier -->
+        <section>
+            <img src="{% static '/img/bg.png' %}" alt="">
+        </section>
+        <!-- Begin learning element -->
+        <section class="mb-xs-45 mb-md-90 mb-lg-120 learning-elements-section" id="my-bg">
+            <div class="container">
+                <div class="row align-items-lg-center">
+                    <div class="col-lg-6 on-scroll fade-left">
+                        <div class="block-header">
+                            <p class="mb-xs-15 mb-lg-8">Биздин окутуу программабыз</p>
+                            <h2 class="mb-xs-25 mb-md-25"><span>{{ top_name.garden_name }}</span> бала бакчасынын окутуу
+                                программасы
+                            </h2>
+                        </div>
+                        <p class="mb-xs-15 mb-lg-8">Балдарга оюн аркылуу билим берүү кызыктуулукту жана оңой
+                            өздөштүрүүчүлүктө аларды ар тараптуу шыктандырууга негиз болот, ал үчүн бизде ар түрдүү
+                            тармактардын группаларга ылайык оюндарды даярдалган.</p>
+                    </div>
+                    <div class="col-lg-6 on-scroll fade-up">
+                        <div class="el-wr">
+                            <div class="learning-elements-wrap">
+                                <div class="circle-container">
+                                    <!-- <div class="learning-item" data-learn-tab='#0'>
+                                        <img src="img/gardering.svg" alt="img">
+                                        <p>Gardening</p>
+                                    </div> -->
+                                    <div class="learning-item" data-learn-tab='#1'>
+                                        <img src="{% static 'img/sport.svg' %}" alt="img">
+                                        <p>Спорт</p>
+                                    </div>
+                                    <div class="learning-item" data-learn-tab='#2'>
+                                        <img src="{% static 'img/art.svg' %}" alt="img">
+                                        <p>Сүрөт тартуу</p>
+                                    </div>
+                                    <!-- <div class="learning-item" data-learn-tab='#3'>
+                                        <img src="img/excursions.svg" alt="img">
+                                        <p>Excursions</p>
+                                    </div> -->
+                                    <div class="learning-item" data-learn-tab='#4'>
+                                        <img src="{% static 'img/outdoor.svg' %}" alt="img">
+                                        <p>Сейилдөө</p>
+                                    </div>
+                                    <div class="learning-item" data-learn-tab='#5'>
+                                        <img src="{% static 'img/math.svg' %}" alt="img">
+                                        <p>Окутуу</p>
+                                    </div>
+                                    <div class="learning-item" data-learn-tab='#6'>
+                                        <img src="{% static 'img/literacy.svg' %}" alt="img">
+                                        <p>Маектешүү</p>
+                                    </div>
+                                </div>
+                                <div class="tab-element-content">
+                                    <div class="for-tab start">
+                                        <h3>Окуу<br>планы</h3>
+                                    </div>
+
+                                    <div class="for-tab" id="1">
+                                        <h3>Спорт</h3>
+                                        <p class="mb-0">
+                                            Балдар өзүнүн кымылы менен кан тамырларынын чыдамкайлыгын өнүктүрүүгө
+                                            тийиш.</p>
+                                    </div>
+                                    <div class="for-tab" id="2">
+                                        <h3>Сүрөт тартуу</h3>
+                                        <p class="mb-0">
+                                            Балдар колу менен аркандай курчактарды, музыкалык аспаптарды жана аркандай
+                                            түрдүү түстөгү
+                                            нерселерди жасаганды жакшы көрөт. Жана ошондой эле сүрот тартканды, түрдү
+                                            нерселерди жабыштырганды
+                                            жана өздөрү каалагандай кылып кооздогонду.</p>
+                                    </div>
+
+                                    <div class="for-tab" id="4">
+                                        <h3>Сейилдөө</h3>
+                                        <p class="mb-0">
+                                            Биздин балдар ачык асман астындагы аянтчаларда ойношот. Аны менен бирге
+                                            абасы таза бакчаларда
+                                            сейилдешет</p>
+                                    </div>
+                                    <div class="for-tab" id="5">
+                                        <h3>Окутуу</h3>
+                                        <p class="mb-0">
+                                            Мектепке чейинки даярдоо программасы өзүнө кызыктуу сабактарды тарбиялык
+                                            мааниси бар сүрөттөрдү шаңдуу
+                                            оюндарды камтуу менен балдарды кызыктыруу форматында болушу керек.
+                                        </p>
+                                    </div>
+                                    <div class="for-tab" id="6">
+                                        <h3>Маектешүү</h3>
+                                        <p class="mb-0">
+                                            Баланын көркөм сүйлө жөмдөндүүлүгүн өнүктүрүү үчүн системалык жана
+                                            комплекстү
+                                            грамматика программасы өзөк болуп берет. Программа китептердин айланасында
+                                            системалык түз
+                                            окутууну колдонот</p>
+                                    </div>
+                                </div>
+                                <div class="my-paroller" data-paroller-factor="0.3" data-paroller-type="foreground"
+                                     data-paroller-direction="vertical">
+                                    <img src="{% static 'img/lazy.png' %}" class="lazy"
+                                         data-src="{% static 'img/cloud.png' %}" alt="img">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End learning element -->
+
+    </main>
+{% endblock content %}

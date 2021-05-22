@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+        <h2>Кируу</h2>
+        <div class="col-md-4">
+            <form method="post">
+                {% csrf_token %}
+                <p><label for="id_username">Аты-жону:</label> <input type="text" name="username" autofocus=""
+                                                                     required="" id="id_username"></p>
+                <p><label for="id_password">Пароль:</label> <input type="password" name="password" required=""
+                                                                   id="id_password"></p>
+                <button type="submit">Кируу</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

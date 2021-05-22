@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Begin page name -->
+    <section class="page-name mb-xs-30 mb-md-30 mb-lg-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Электрондук каттоого арыз берүү</h1>
+                </div>
+            </div>
+        </div>
+        <div class="layer-background lazy" data-src="{% static 'img/slider.png' %}"></div>
+        <img src="{% static 'img/lazy.png' %}" class="page-name-img lazy" data-src="{% static 'img/cloud.png' %}"
+             alt="Img">
+    </section>
+    <!-- End page name -->
+    <div class="container">
+        <div class="col-md-4 col-xs-12">
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <p><label for="id_child_name">Баланын Аты-Жөнү:</label> <input type="text" name="child_name"
+                                                                                   maxlength="200" required=""
+                                                                                   id="id_child_name"></p>
+                    <p><label for="id_child_gender">Баланын жыныс:</label> <select name="child_gender" required=""
+                                                                                   id="id_child_gender">
+                        <option value="" selected="">---------</option>
+
+                        <option value="Erkek">Уул</option>
+
+                        <option value="Kyz">Кыз</option>
+
+                    </select></p>
+
+                    <p><label for="id_child_birthday">Баланын Туулган күнү:</label>
+                        <input type="date"
+                               name="child_birthday"
+                               required=""
+                               id="id_child_birthday"></p>
+
+
+                    <p><label for="id_birth_certificate">Туулгандыгы туралуу Күболүктүн номери:</label> <input
+                            type="text" name="birth_certificate" maxlength="15" required="" id="id_birth_certificate">
+                    </p>
+                    <p><label for="id_custom_given_certificate">Күбөлүктүү берген Орган:</label> <input type="text"
+                                                                                                        name="custom_given_certificate"
+                                                                                                        maxlength="15"
+                                                                                                        required=""
+                                                                                                        id="id_custom_given_certificate">
+                    </p>
+                    <p><label for="id_certificate_given_date">Күбөлүктү берген күнү:</label> <input type="date"
+                                                                                                    name="certificate_given_date"
+                                                                                                    required=""
+                                                                                                    id="id_certificate_given_date">
+                    </p>
+                    <p><label for="id_child_address">Дарек:</label> <input type="text" name="child_address"
+                                                                           maxlength="255" required=""
+                                                                           id="id_child_address"></p>
+                    <p><label for="id_parent_name">Ата-Энесинин Аты-Жөнү:</label> <input type="text" name="parent_name"
+                                                                                         maxlength="255" required=""
+                                                                                         id="id_parent_name"></p>
+                    <p><label for="id_parent_phone">Телефону:</label> <input type="text" name="parent_phone"
+                                                                             maxlength="20" required=""
+                                                                             id="id_parent_phone"></p>
+                    <button class="btn btn-info" type="submit" value="Сактоо">Сактоо</button>
+                </form>
+            </form>
+        </div>
+    </div>
+
+<script src="{% static 'vendor/js/main.js' %}"></script>
+{% endblock content %}

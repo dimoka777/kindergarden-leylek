@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <section class="page-name mb-xs-30 mb-md-30 mb-lg-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">{{ post.title }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="layer-background lazy" data-src="{% static 'img/slider.png' %}"></div>
+        <img src="{% static 'img/lazy.png' %}" class="page-name-img lazy" data-src="{% static 'img/cloud.png' %}"
+             alt="Img">
+    </section>
+    <div class="container">
+
+        <div class="col-xl-12 col-lg-12 pt-xs-20 pt-md-20">
+            <div class="blog-post single-post mb-xs-30 mb-md-60 mb-lg-90">
+                <div class="post-image">
+                    <a href="#">
+                        <img src="{{ post.photo.url }}" class="lazy" alt="img">
+                    </a>
+                </div>
+                <div class="post-description">
+                    <div class="post-meta">
+                        <time datetime="2019-03-05">{{ post.post_date }}</time>
+                    </div>
+                    <a href="single-post.html" class="post-title">{{ post.title }}</a>
+                    <p>{{ post.body }}</p>
+                </div>
+                <hr>
+                <div class="post-navigate">
+                    <div class="col-md-12">
+                        {% if user.is_authenticated %}
+                            <ul class="tag-list">
+                                <div class="blog-post-nav post-prev">
+                                    <li>
+                                        <a href="{% url 'post_edit' post.pk %}" class="news-btn">Жаңылыкты
+                                            өзгөртүү</a>
+                                    </li>
+                                </div>
+                                <li >
+                                    <a href="{% url 'post_delete' post.pk %}" class="news-btn news-delete-btn">Жаңылыкты
+                                        өчүрүү</a>
+                                </li>
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+{% endblock content %}

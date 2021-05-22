@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="post-entry">
+        <h2>{{ queue.child_name }}</h2>
+        <p>{{ queue.child_birthday }}</p>
+    </div>
+    {% if user.is_authenticated %}
+    <button class="btn btn-success"><a href="{% url 'queue_update' queue.pk %}" style="color: white">Жаңылыкты өзгөртүү</a></button>
+    <button class="btn btn-danger"><a href="{% url 'queue_delete' queue.pk %}" style="color: white">Жаңылыкты өчүрүү</a></button>
+    {% endif %}
+{% endblock content %}

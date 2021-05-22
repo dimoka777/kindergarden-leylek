@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Begin page name -->
+    <section class="page-name mb-xs-30 mb-md-30 mb-lg-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Жаңылыктар</h1>
+                </div>
+            </div>
+        </div>
+        <div class="layer-background lazy" data-src="{% static 'img/slider.png' %}"></div>
+        <img src="{% static 'img/lazy.png' %}" class="page-name-img lazy" data-src="{% static 'img/cloud.png' %}"
+             alt="Img">
+    </section>
+    <!-- End page name -->
+    <main class="main-container">
+        <!-- Begin blog-posts -->
+        <!-- Begin latest news -->
+        <section class="mb-xs-50 mb-md-80 mb-lg-120" id="bg-news">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="section-header on-scroll">
+                            <p class="h-sub">{{ top_name.garden_name }} бала бакчасынын жаңылыктары</p>
+                            {% if user.is_authenticated %}
+                                <p>
+                                    <button class="btn btn-info"><a href="{% url 'post_new' %}" style="color: white">Жаңылык
+                                        Кошуу</a></button>
+                                </p>
+                            {% endif %}
+                        </div>
+                        <div class="news-slider" data-show-count='3' data-show-count-md='2' data-show-count-mob='1'
+                             data-slick-speed="5000" data-slick-autoplay="true">
+                            {% for post in object_list %}
+                                <div class="news-slider__card">
+                                    <div class="news-block">
+                                        <a href="{% url 'post_detail' post.pk %}" class="news-block__img">
+                                            <img src="{{ post.photo.url }}" alt="img">
+                                        </a>
+                                        <div class="news-block-description">
+                                            <div class="news-block-description__short-text">
+
+                                                <h4><a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a></h4>
+                                                <hr>
+
+                                                {% if post.body|length > 50 %}
+                                                    <p>{{ post.body|slice:":100" }} <a
+                                                            href="{% url 'post_detail' post.pk %}"> улантуу...</a></p>
+                                                {% else %}
+                                                    <p>{{ post.body }}</p>
+                                                {% endif %}
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End latest news -->
+    </main>
+{% endblock content %}

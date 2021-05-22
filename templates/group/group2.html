@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Begin page name -->
+    <section class="page-name mb-xs-30 mb-md-30 mb-lg-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">{{ group_name.1.group_name }}</h1>
+                </div>
+            </div>
+        </div>
+        <div class="layer-background lazy" data-src="{% static 'img/slider.png' %}"></div>
+        <img src="{% static 'img/lazy.png' %}" class="page-name-img lazy" data-src="{% static 'img/cloud.png' %}"
+             alt="Img">
+    </section>
+    <!-- End page name -->
+    <main class="main-container">
+        <!-- Begin contacts -->
+        <section class="contact-container pt-60 pb-60 pt-xs-30 pb-xs-30 pt-md-60 pb-md-60 r-cloud">
+            <div class="container">
+                <div class="row">
+                    <div class="section-header on-scroll">
+                        <p class="h-sub">«{{ top_name.garden_name }}»МЧББМсинин кенже тайпа балдардын тизмеси.</p>
+                    </div>
+                    <table class="table table-striped">
+                        <!--Table head-->
+                        <thead>
+                        <tr>
+                            <th style="width: 50px;">№</th>
+                            <th>Аты-жөнү</th>
+                            <th>Туулган-күнү</th>
+                            <th>Арыздын катталган күнү</th>
+                            {% if user.is_authenticated %}
+                                <th>Туулгандыгы туралуу Күбөлүк</th>
+                                <th>Дарек</th>
+                                <th>Ата-Эне</th>
+                                <th>Телефон</th>
+                                <th>Тайпа</th>
+                            {% endif %}
+                        </tr>
+                        </thead>
+                        <!--Table head-->
+
+                        <!--Table body-->
+                        <tbody>
+                        {% for post in object_list %}
+                            {% if post.choice_group.id == 2 %}
+                                <tr>
+                                    <th class="counterCell"></th>
+                                    <td>{{ post.child_name }}</td>
+                                    <td>{{ post.child_birthday }}</td>
+                                    <td>{{ post.registration_date }}</td>
+                                    {% if user.is_authenticated %}
+                                        <td>{{ post.birth_certificate }}</td>
+                                        <td>{{ post.child_address }}</td>
+                                        <td>{{ post.parent_name }}</td>
+                                        <td>{{ post.parent_phone }}</td>
+                                        <td><a href="{% url 'queue_update' post.id %}" >Ɵзгөртүү</a>
+                                        </td>
+                                    {% endif %}
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                        </tbody>
+                        <!--Table body-->
+                    </table>
+                    <!--Table-->
+                </div>
+            </div>
+        </section>
+        <!-- End contacts -->
+    </main>
+
+{% endblock content %}

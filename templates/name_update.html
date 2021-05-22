@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Begin page name -->
+    <section class="page-name mb-xs-30 mb-md-30 mb-lg-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Бала бакча жөнүндө <br>маалымат өзгөртүү</h1>
+                </div>
+            </div>
+        </div>
+        <div class="layer-background lazy" data-src="{% static 'img/slider.png' %}"></div>
+        <img src="{% static 'img/lazy.png' %}" class="page-name-img lazy" data-src="{% static 'img/cloud.png' %}"
+             alt="Img">
+
+    </section>
+    <!-- End page name -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5 col-xs-12">
+                <form action="" method="post">
+                    {% csrf_token %}
+                   {{ form.as_p }}
+                    <button type="submit" value="Жаңылоо" class="btn btn-info">Жаңылоо</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endblock content %}

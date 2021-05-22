@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <!-- Begin page name -->
+    <section class="page-name mb-xs-30 mb-md-30 mb-lg-60">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Башкаруу жай</h1>
+                </div>
+            </div>
+        </div>
+        <div class="layer-background lazy" data-src="{% static 'img/slider.png' %}"></div>
+        <img src="{% static 'img/lazy.png' %}" class="page-name-img lazy" data-src="{% static 'img/cloud.png' %}"
+             alt="Img">
+    </section>
+    <!-- End page name -->
+    <main class="container">
+        <!-- Begin blog-posts -->
+        <!-- Begin latest news -->
+        <section class="mb-xs-50 mb-md-80 mb-lg-120" id="">
+            <div class="parent-resources-wrap pt-50">
+                <div class="section-header mb-xs-30 mb-md-31">
+                    <p>Бул жерде, саайт жөнүндө маалыматтарды өзгөртсөңүз болот. Бирок өзгөртүнүн алдында бираз сак болгула!</p>
+                </div>
+                <ul class="resources-list">
+                    <li>
+                        <div class="resources-block">
+                            <a href="{% url 'post_new' %}">
+                                <div class="resources-img">
+                                    <img src="{% static 'img/paper-form.svg' %}" class="lazy resource-ico" alt="img" style="">
+                                    <img src="{% static 'img/cloud-small.svg' %}" class="lazy cloud" alt="img" style="">
+                                </div>
+                                <div class="resources-text">
+                                    <p>Жаңылык кошу</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="resources-block">
+                            <a href="{% url 'name' %}">
+                                <div class="resources-img">
+                                    <img src="{% static 'img/handbook.svg' %}" class="lazy resource-ico" alt="img" style="">
+                                    <img src="{% static 'img/cloud-small.svg' %}" class="lazy cloud" alt="img" style="">
+                                </div>
+                                <div class="resources-text">
+                                    <p>Бала бакча жөнүндө маалымат</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="resources-block">
+                            <a href="{% url 'group' %}">
+                                <div class="resources-img">
+                                    <img src="{% static 'img/checklist.svg' %}" class="lazy resource-ico" alt="img" style="">
+                                    <img src="{% static 'img/cloud-small.svg' %}" class="lazy cloud" alt="img" style="">
+                                </div>
+                                <div class="resources-text">
+                                    <p>Тайпаларды өзгөртү</p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- End latest news -->
+
+{% endblock content %}
